@@ -41,14 +41,14 @@ export default function AppForm({ navigation }) {
        {/* Example: Displaying an Image */}
        <View style={styles.imageContainer}>
             <Image
-              source={require('../../assets/DeduceImage.png')} // Change the path to your actual image file
+              // source={require('../../assets/deduceImage.png')} // Change the path to your actual image file
               style={styles.image}
               resizeMode="cover"
             />
           </View>
       <View style={{ height: 80 }}>
         <FormHeader
-          leftHeading='Welcome '
+          leftHeading='Welcome'
           rightHeading='Back'
           subHeading='Deduce Technology Task Manager'
           rightHeaderOpacity={rightHeaderOpacity}

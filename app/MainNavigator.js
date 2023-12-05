@@ -20,7 +20,7 @@ const StackNavigator = () => {
 const MainNavigator = () => {
   const { isLoggedIn } = useLogin();
   console.log(isLoggedIn);
-  return !isLoggedIn ? <Cam/> : <StackNavigator />;
+  return isLoggedIn ? <Cam/> : <StackNavigator />;
 };
 
 export default MainNavigator;

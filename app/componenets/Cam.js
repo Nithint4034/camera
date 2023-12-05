@@ -35,17 +35,44 @@ export default function Cam() {
         // Fetch current location
         const location = await Location.getCurrentPositionAsync({});
         console.log('Location:', location.coords.latitude, location.coords.longitude);
-
+  
         // Take picture
         const { uri } = await cameraRef.current.takePictureAsync();
         console.log('Photo captured:', uri);
-
+  
         // Convert image to base64
         const base64 = await convertToBase64(uri);
         // console.log('Base64 representation:', base64);
+  
+        // API endpoint
+        const apiUrl = 'http://10.10.5.130:8795/add_location';
+  
+        // Prepare payload
+        const payload = {
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+          image: base64,
+        };
+        // console.log('jgfjg', payload);
+  
+        // Send POST request to the API
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
 
-        // Show success toast
-        showToast('success', 'Photo Captured', `Location: ${location.coords.latitude}, ${location.coords.longitude}`);
+        // console.log(response);
+  
+        if (response.ok) {
+          // Show success toast
+          showToast('success', 'Photo Uploaded', `Location: ${location.coords.latitude}, ${location.coords.longitude}`);
+        } else {
+          // Show error toast
+          showToast('error', 'Error Uploading Photo', 'Please try again');
+        }
       } catch (error) {
         console.error('Error taking picture:', error);
         // Show error toast
@@ -53,6 +80,7 @@ export default function Cam() {
       }
     }
   };
+  
 
   const convertToBase64 = async (uri) => {
     try {

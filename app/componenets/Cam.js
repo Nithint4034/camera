@@ -11,10 +11,8 @@ export default function Cam() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [hasLocationPermission, setHasLocationPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
-  const { setIsLoggedIn } = useLogin();
   const cameraRef = useRef(null);
   const [showTasks, setShowTasks] = useState(false);
-
 
   useEffect(() => {
     const getPermissions = async () => {

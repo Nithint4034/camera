@@ -5,6 +5,7 @@ import * as Location from 'expo-location';
 import * as FileSystem from 'expo-file-system';
 import Toast from 'react-native-toast-message';
 import { useLogin } from '../context/LoginProvider';
+import Tasks from './Tasks';
 
 export default function Cam() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
@@ -12,6 +13,8 @@ export default function Cam() {
   const [type, setType] = useState(Camera.Constants.Type.back);
   const { setIsLoggedIn } = useLogin();
   const cameraRef = useRef(null);
+  const [showTasks, setShowTasks] = useState(false);
+
 
   useEffect(() => {
     const getPermissions = async () => {
@@ -62,6 +65,7 @@ export default function Cam() {
 
         if (response.ok) {
           showToast('success', 'Photo Uploaded', `Location: ${location.coords.latitude}, ${location.coords.longitude}`);
+          setShowTasks(true);
         } else {
           showToast('error', 'Error Uploading Photo', 'Please try again');
         }
@@ -94,30 +98,34 @@ export default function Cam() {
 
   return (
     <View style={{ flex: 1 }}>
-      <Camera style={{ flex: 1 }} type={type} ref={cameraRef}>
-        <View style={{ margin: 170 }}>
-          <Button title="" color="rgba(0, 0, 0, 0)" />
-        </View>
-        <TouchableOpacity
-          style={{
-            position: 'absolute',
-            bottom: 16,
-            right: 145,
-          }}
-          onPress={handleTakePicture}>
-          <View
-            style={{
-              width: 70,
-              height: 70,
-              backgroundColor: 'red',
-              borderRadius: 35,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text style={{ fontSize: 18, color: 'white' }}> Capture </Text>
+      {showTasks ? (
+        <Tasks />
+      ) : (
+        <Camera style={{ flex: 1 }} type={type} ref={cameraRef}>
+          <View style={{ margin: 170 }}>
+            <Button title="" color="rgba(0, 0, 0, 0)" />
           </View>
-        </TouchableOpacity>
-      </Camera>
+          <TouchableOpacity
+            style={{
+              position: 'absolute',
+              bottom: 16,
+              right: 145,
+            }}
+            onPress={handleTakePicture}>
+            <View
+              style={{
+                width: 70,
+                height: 70,
+                backgroundColor: 'red',
+                borderRadius: 35,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Text style={{ fontSize: 18, color: 'white' }}> Capture </Text>
+            </View>
+          </TouchableOpacity>
+        </Camera>
+      )}
       <Toast ref={(ref) => Toast.setRef(ref)} />
     </View>
   );

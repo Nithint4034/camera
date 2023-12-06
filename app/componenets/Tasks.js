@@ -12,7 +12,6 @@ const Tasks = () => {
     setShowTasks(true);
   };
 
-
   const handleLogout = () => {
     setIsLoggedIn(false);
   };

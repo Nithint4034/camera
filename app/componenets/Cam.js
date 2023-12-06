@@ -76,6 +76,10 @@ export default function Cam() {
     }
   };
 
+  const handleBackPress = () => {
+    setShowTasks(true);
+  };
+
   const convertToBase64 = async (uri) => {
     try {
       const base64 = await FileSystem.readAsStringAsync(uri, {
@@ -109,19 +113,38 @@ export default function Cam() {
             style={{
               position: 'absolute',
               bottom: 16,
-              right: 145,
+              right: 135,
             }}
             onPress={handleTakePicture}>
             <View
               style={{
-                width: 70,
-                height: 70,
-                backgroundColor: 'red',
-                borderRadius: 35,
+                width: 80,
+                height: 80,
+                backgroundColor: 'rgba(255, 0, 0, 0.5)',
+                borderRadius: 40,
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
               <Text style={{ fontSize: 18, color: 'white' }}> Capture </Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              position: 'absolute',
+              bottom: 35,
+              right: 20,
+            }}
+            onPress={handleBackPress}>
+            <View
+              style={{
+                width: 80,
+                height: 40,
+                backgroundColor: 'rgba(0, 0, 0, 0.2)', // Red color with 50% opacity
+                borderRadius: 35,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Text style={{ fontSize: 18, color: 'white' }}>Go Back</Text>
             </View>
           </TouchableOpacity>
         </Camera>

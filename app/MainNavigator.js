@@ -4,7 +4,7 @@ import { useLogin } from './context/LoginProvider';
 import UserProfile from './componenets/UserProfile';
 import AppForm from './componenets/AppForm';
 import Tasks from './componenets/Tasks';
-import Cam from './componenets/Cam';
+// import Cam from './componenets/Cam';
 
 const Stack = createStackNavigator();
 
@@ -20,7 +20,7 @@ const StackNavigator = () => {
 const MainNavigator = () => {
   const { isLoggedIn } = useLogin();
   console.log(isLoggedIn);
-  return isLoggedIn ? <Cam/> : <StackNavigator />;
+  return isLoggedIn ? <Tasks/> : <StackNavigator />;
 };
 
 export default MainNavigator;

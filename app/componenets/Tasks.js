@@ -12,10 +12,6 @@ const Tasks = () => {
     setShowTasks(true);
   };
 
-  const handleButtonPress = () => {
-    console.log('Submit button pressed!');
-    // Add your logic here
-  };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -23,27 +19,21 @@ const Tasks = () => {
 
   return (
     <View style={styles.container}>
-      {isLoggedIn ? (
-        showTasks ? (
-          <Cam />
-        ) : (
-          <View>
-            <Text>Your App Content Above the Button</Text>
-            <TouchableOpacity onPress={handleCapturePress} style={styles.button}>
-              <Text style={styles.buttonText}>Capture Photo</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={handleButtonPress} style={styles.button}>
-              <Text style={styles.buttonText}>Submit</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={handleLogout} style={[styles.button, styles.logoutButton]}>
-              <Text style={styles.buttonText}>Logout</Text>
-            </TouchableOpacity>
-          </View>
-        )
-      ) : (
-        <Text>Login Page</Text>
-      )}
-    </View>
+    {showTasks ? (
+      <Cam />
+    ) : (
+      <View>
+        <Text>Your App Content Above the Button</Text>
+        <TouchableOpacity onPress={handleCapturePress} style={styles.button}>
+          <Text style={styles.buttonText}>Capture Photo</Text>
+        </TouchableOpacity>
+        {/* Additional content can be added here */}
+        <TouchableOpacity onPress={handleLogout} style={[styles.button, styles.logoutButton]}>
+          <Text style={styles.buttonText}>Logout</Text>
+        </TouchableOpacity>
+      </View>
+    )}
+  </View>
   );
 };
 

@@ -22,7 +22,14 @@ const Tasks = () => {
         <Cam />
       ) : (
         <View>
-          <View style={styles.imageContainerboy}>
+          <View>
+            <Image
+              source={require('../../assets/deduceLogo.jpg')} // Change the path to your actual image file
+              style={styles.logo}
+              resizeMode="cover"
+            />
+          </View>
+          <View>
             <Image
               source={require('../../assets/boy.png')} // Change the path to your actual image file
               style={styles.image}
@@ -76,6 +83,13 @@ const styles = StyleSheet.create({
     height: 280, // Adjust the height as needed
     borderRadius: 5, // Optional: Add borderRadius for a rounded image
   },
+  logo: {
+    width: 285, // Adjust the width as needed
+    height: 90, // Adjust the height as needed
+    marginBottom: 15, // Adjust the margin as needed
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 });
 
 export default Tasks;

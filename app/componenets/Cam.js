@@ -131,7 +131,7 @@ export default function Cam() {
               style={{
                 width: 80,
                 height: 80,
-                backgroundColor: isPressed ? 'green' : 'red',
+                backgroundColor: isPressed ? 'green' : 'rgba(255, 0, 0, 0.5)',
                 borderRadius: 40,
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -140,7 +140,7 @@ export default function Cam() {
               <Text style={{ fontSize: 18, color: 'white' }}> Capture </Text>
             </View>
           </TouchableOpacity>
-          
+
           <TouchableOpacity
             style={{
               position: 'absolute',

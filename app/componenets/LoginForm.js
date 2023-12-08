@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, TextInput } from 'react-native';
+import { View, StyleSheet, Text, TextInput, ToastAndroid } from 'react-native';
 import client from '../api/client';
 import { useLogin } from '../context/LoginProvider';
 import { isValidEmail, isValidObjField, updateError } from '../utils/methods';
@@ -44,6 +44,7 @@ const LoginForm = () => {
           setUserInfo({ email: '', password: '' });
           setProfile(res.data.user);
           setIsLoggedIn(true);
+          showToast('Login Successful')
           console.log('akjsbh');
         }
         console.log(res.data);
@@ -51,6 +52,10 @@ const LoginForm = () => {
         console.log(error);
       }
     }
+  };
+
+  const showToast = (message) => {
+    ToastAndroid.show(message, ToastAndroid.SHORT);
   };
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, ToastAndroid } from "react-native";
 
 import { isValidEmail, isValidObjField, updateError } from "../utils/methods";
 import FormContainer from "./FormContainer";
@@ -89,7 +89,7 @@ const SignupForm = ({ navigation }) => {
     const res = await client.post("/register", {
       ...values,
     });
-
+    showToast('Registered Successful')
     if (res.data.success) {
       const signInRes = await client.post("/login", {
         email: values.email,
@@ -105,6 +105,10 @@ const SignupForm = ({ navigation }) => {
     }
     formikActions.resetForm();
     formikActions.setSubmitting(false);
+  };
+
+  const showToast = (message) => {
+    ToastAndroid.show(message, ToastAndroid.SHORT);
   };
 
   return (

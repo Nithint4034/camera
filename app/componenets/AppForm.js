@@ -41,7 +41,7 @@ export default function AppForm({ navigation }) {
       {/* Example: Displaying an Image */}
       <View style={styles.imageContainer}>
         <Image
-          source={require('../path/deduceLogo.png')} // Change the path to your actual image file
+          source={require('../../assets/deduceLogo.jpg')} // Change the path to your actual image file
           style={styles.image}
           resizeMode="cover"
         />

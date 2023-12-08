@@ -24,7 +24,7 @@ const Tasks = () => {
         <View>
           <View style={styles.imageContainerboy}>
             <Image
-              source={require('../path/boy.png')} // Change the path to your actual image file
+              source={require('../../assets/boy.png')} // Change the path to your actual image file
               style={styles.image}
               resizeMode="cover"
             />

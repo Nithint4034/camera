@@ -100,7 +100,7 @@ const LandingPage = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('./app/path/deduceLogo.png')} // Replace with the path to your image
+        source={require('./assets/deduceLogo.jpg')} // Replace with the path to your image
         style={styles.logo}
         resizeMode='cover'
       />

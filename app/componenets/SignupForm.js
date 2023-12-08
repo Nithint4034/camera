@@ -228,7 +228,7 @@ const SignupForm = ({ navigation }) => {
               <FormSubmitButton
                 submitting={isSubmitting}
                 onPress={handleSubmit}
-                title="Sign up"
+                title="Register"
               />
             </>
           );

@@ -72,7 +72,7 @@ export default function AppForm({ navigation }) {
         <FormSelectorBtn
           style={styles.borderRight}
           backgroundColor={signupColorInterpolate}
-          title='Sign up'
+          title='Register'
           onPress={() => scrollView.current.scrollTo({ x: width })}
         />
       </View>

@@ -116,7 +116,7 @@ const App = () => {
     const timer = setTimeout(() => {
       // After 3 seconds, set showLandingPage to false
       setShowLandingPage(false);
-    }, 3000);
+    }, 2000);
     return () => clearTimeout(timer); // Cleanup the timer on component unmount
   }, []);
 

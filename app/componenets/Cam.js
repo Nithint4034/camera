@@ -13,7 +13,7 @@ export default function Cam() {
   const cameraRef = useRef(null);
   const [showTasks, setShowTasks] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
-  console.log('green',isPressed);
+  console.log('green', isPressed);
 
   useEffect(() => {
     const getPermissions = async () => {
@@ -45,15 +45,20 @@ export default function Cam() {
       try {
         const location = await Location.getCurrentPositionAsync({});
         console.log('Location:', location.coords.latitude, location.coords.longitude);
+
         const { uri } = await cameraRef.current.takePictureAsync();
         console.log('Photo captured:', uri);
+
         const base64 = await convertToBase64(uri);
+
         const apiUrl = 'http://10.10.5.130:8790/add_location';
+
         const payload = {
           latitude: location.coords.latitude,
           longitude: location.coords.longitude,
           image: base64,
         };
+
         const response = await fetch(apiUrl, {
           method: 'POST',
           headers: {
@@ -61,14 +66,15 @@ export default function Cam() {
           },
           body: JSON.stringify(payload),
         });
+
         if (response.ok) {
           setIsPressed(true);
           setTimeout(() => {
             showToast('success', 'Photo Uploaded', `Location: ${location.coords.latitude}, ${location.coords.longitude}`);
           }, 1000);
           setTimeout(() => {
-          setShowTasks(true);
-        }, 2000);
+            setShowTasks(true);
+          }, 2000);
         } else {
           showToast('error', 'Error Uploading Photo', 'Please try again');
         }
@@ -78,9 +84,11 @@ export default function Cam() {
       }
     }
   };
+
   const handleBackPress = () => {
     setShowTasks(true);
   };
+
   const convertToBase64 = async (uri) => {
     try {
       const base64 = await FileSystem.readAsStringAsync(uri, {
@@ -110,6 +118,7 @@ export default function Cam() {
           <View style={{ margin: 170 }}>
             <Button title="" color="rgba(0, 0, 0, 0)" />
           </View>
+          
           <TouchableOpacity
             style={{
               position: 'absolute',
@@ -131,6 +140,7 @@ export default function Cam() {
               <Text style={{ fontSize: 18, color: 'white' }}> Capture </Text>
             </View>
           </TouchableOpacity>
+          
           <TouchableOpacity
             style={{
               position: 'absolute',
@@ -150,6 +160,29 @@ export default function Cam() {
               <Text style={{ fontSize: 18, color: 'white' }}>Go Back</Text>
             </View>
           </TouchableOpacity>
+
+          {isPressed?
+          <TouchableOpacity
+          style={{
+            position: 'absolute',
+            // bottom: 15,
+            top:220,
+            right: 85,
+          }}
+          onPress={handleBackPress}>
+            <View
+              style={{
+                width: 180,
+                height: 40,
+                backgroundColor: 'green', // Red color with 50% opacity
+                borderRadius: 35,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Text style={{ fontSize: 28, color: 'white' }}>Successful..!</Text>
+            </View>
+          </TouchableOpacity>
+            :''}
         </Camera>
       )}
       <Toast ref={(ref) => Toast.setRef(ref)} />

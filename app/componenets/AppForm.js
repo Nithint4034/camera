@@ -38,14 +38,14 @@ export default function AppForm({ navigation }) {
 
   return (
     <View style={{ flex: 1, paddingTop: 120 }}>
-       {/* Example: Displaying an Image */}
-       <View style={styles.imageContainer}>
-            <Image
-              // source={require('../../assets/deduceImage.png')} // Change the path to your actual image file
-              style={styles.image}
-              resizeMode="cover"
-            />
-          </View>
+      {/* Example: Displaying an Image */}
+      <View style={styles.imageContainer}>
+        <Image
+          source={require('../path/deduceLogo.png')} // Change the path to your actual image file
+          style={styles.image}
+          resizeMode="cover"
+        />
+      </View>
       <View style={{ height: 80 }}>
         <FormHeader
           leftHeading='Welcome'
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    marginBottom:"20px",
+    marginBottom: "20px",
     width: 255, // Adjust the width as needed
     height: 80, // Adjust the height as needed
     borderRadius: 15, // Optional: Add borderRadius for a rounded image

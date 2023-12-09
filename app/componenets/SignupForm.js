@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Text, ToastAndroid } from "react-native";
-
 import { isValidEmail, isValidObjField, updateError } from "../utils/methods";
 import FormContainer from "./FormContainer";
 import FormInput from "./FormInput";
 import FormSubmitButton from "./FormSubmitButton";
 import { StackActions } from "@react-navigation/native";
-
 import { Formik } from "formik";
 import * as Yup from "yup";
-
 import client from "../api/client";
 
 const validationSchema = Yup.object({
@@ -26,6 +23,16 @@ const validationSchema = Yup.object({
     [Yup.ref("password"), null],
     "Password does not match!"
   ),
+  mobile_number:Yup.string()
+  .required("Contact Number is required!"),
+  city:Yup.string()
+  .required("City is required!"),
+  pan_number:Yup.string()
+  .required("Pan Number is required!"),
+  account_number:Yup.string()
+  .required("Bank A/c Number is required!"),
+  ifsc_code:Yup.string()
+  .required("IFSC Code is required!"),
 });
 
 const SignupForm = ({ navigation }) => {
@@ -46,6 +53,8 @@ const SignupForm = ({ navigation }) => {
   const {
     username,
     email,
+    mobile_number,
+    city,
     password,
     password_confirmation,
     pan_number,
@@ -155,7 +164,7 @@ const SignupForm = ({ navigation }) => {
                 onBlur={handleBlur("email")}
                 autoCapitalize="none"
                 label="Email"
-                placeholder="example@email.com"
+                placeholder="example@gmail.com"
               />
               <FormInput
                 value={mobile_number}

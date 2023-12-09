@@ -51,7 +51,8 @@ export default function Cam() {
 
         const base64 = await convertToBase64(uri);
 
-        const apiUrl = 'http://10.10.5.130:8790/add_location';
+        const apiUrl = 'https://deducetravelshoot.deducetech.com/add_location';   //AWS Hosted
+        // const apiUrl = 'http://10.10.5.130:8793/add_location';   //AWS Hosted
 
         const payload = {
           latitude: location.coords.latitude,

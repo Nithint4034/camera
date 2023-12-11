@@ -30,7 +30,7 @@ const validationSchema = Yup.object({
   pan_number:Yup.string()
   .required("Pan Number is required!"),
   account_number:Yup.string()
-  .required("Bank A/c Number is required!"),
+  .required("Bank A/c required!"),
   ifsc_code:Yup.string()
   .required("IFSC Code is required!"),
 });

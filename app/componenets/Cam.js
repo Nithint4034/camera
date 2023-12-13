@@ -26,25 +26,25 @@ export default function Cam() {
     getPermissions();
   }, []);
 
-// ...
+  // ...
 
-useEffect(() => {
-  // Start the interval when isVisible is true
-  const intervalId = isVisible ? setInterval(() => {
-    setCount((prevCount) => (prevCount > 0 ? prevCount - 1 : 0)); // Change condition to stop at 0
-  }, 1000) : null;
+  useEffect(() => {
+    // Start the interval when isVisible is true
+    const intervalId = isVisible ? setInterval(() => {
+      setCount((prevCount) => (prevCount > 0 ? prevCount - 1 : 0)); // Change condition to stop at 0
+    }, 1000) : null;
 
-  if (count === 0) {
-    clearInterval(intervalId);
-    setIsVisible(false);
-  }
+    if (count === 0) {
+      clearInterval(intervalId);
+      setIsVisible(false);
+    }
 
-  return () => clearInterval(intervalId);
-}, [isVisible, count]);
+    return () => clearInterval(intervalId);
+  }, [isVisible, count]);
 
-// ...
+  // ...
 
-  
+
 
   const showToast = (type, text1, text2) => {
     Toast.show({
@@ -224,3 +224,4 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
 });
+

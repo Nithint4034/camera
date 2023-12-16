@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "POICollection",
-    "slug": "POICollection",
-    "version": "1.0.0",
+    "name": "DTTravelshoot",
+    "slug": "DTTravelshoot",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -18,7 +18,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.nithin4034.POICollection",
+      "package": "com.bigline.travelshoot",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -30,7 +30,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "7045586e-84fa-41d3-8943-79fdede7920b"
+        "projectId": "6d90a80f-9304-4931-a4bc-2e516b8252d1"
       }
     }
   }

@@ -51,15 +51,7 @@ const SignupForm = ({ navigation }) => {
   const [error, setError] = useState("");
 
   const {
-    username,
-    email,
-    mobile_number,
-    city,
-    password,
-    password_confirmation,
-    pan_number,
-    account_number,
-    ifsc_code,
+
   } = userInfo;
 
   const handleOnChangeText = (value, fieldName) => {

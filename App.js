@@ -31,11 +31,11 @@ const App = () => {
   return (
     <LoginProvider>
       <NavigationContainer>
-        {showLandingPage ? (
+        {/* {showLandingPage ? (
           <LandingPage />
-        ) : (
+        ) : ( */}
           <MainNavigator />
-        )}
+        {/* )} */}
       </NavigationContainer>
     </LoginProvider>
   );

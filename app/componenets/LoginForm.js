@@ -37,7 +37,7 @@ const LoginForm = () => {
   const submitForm = async () => {
     if (isValidForm()) {
       try {
-        const res = await client.post('/ login', { ...userInfo });
+        const res = await client.post('/login', { ...userInfo });
         console.log('kGUJV',res);
 
         if (res.status===200) {

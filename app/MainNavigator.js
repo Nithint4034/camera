@@ -17,7 +17,7 @@ const StackNavigator = () => {
 const MainNavigator = () => {
   const { isLoggedIn } = useLogin();
   console.log(isLoggedIn);
-  return !isLoggedIn ? <Tasks/> : <StackNavigator />;
+  return isLoggedIn ? <Tasks/> : <StackNavigator />;
 };
 
 export default MainNavigator;

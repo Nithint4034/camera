@@ -44,8 +44,6 @@ export default function Cam() {
 
   // ...
 
-
-
   const showToast = (type, text1, text2) => {
     Toast.show({
       type,
@@ -73,7 +71,7 @@ export default function Cam() {
 
         const base64 = await convertToBase64(uri);
 
-        const apiUrl = 'https://dtravelshoot.deducetech.com/add_location';   //AWS Hosted
+        const apiUrl = 'https://dtravelshoot.deducetech.com/add _location';   //AWS Hosted
 
         const payload = {
           latitude: location.coords.latitude,
@@ -137,7 +135,7 @@ export default function Cam() {
         <Tasks />
       ) : (
         <Camera style={{ flex: 1 }} type={type} ref={cameraRef}>
-          <View style={{ margin: 170 }}>
+          <View style={{ margin: 172 }}>
             <Button title="" color="rgba(0, 0, 0, 0)" />
           </View>
           <View style={isVisible ? styles.container : { display: 'none' }}>

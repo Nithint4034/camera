@@ -31,11 +31,11 @@ const App = () => {
   return (
     <LoginProvider>
       <NavigationContainer>
-        {/* {showLandingPage ? (
+        {showLandingPage ? (
           <LandingPage />
-        ) : ( */}
+        ) : (
           <MainNavigator />
-        {/* )} */}
+        )}
       </NavigationContainer>
     </LoginProvider>
   );
@@ -64,5 +64,3 @@ const styles = StyleSheet.create({
 });
 
 export default App;
-
-

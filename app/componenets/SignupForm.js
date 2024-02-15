@@ -86,7 +86,7 @@ const SignupForm = ({ navigation }) => {
   // C:\Users\Nithint\Desktop\TestProjects\AwesomeProject\app\componenets\AppForm.js
 
   const signUp = async (values, formikActions) => {
-    console.log("kuwdgv", values);
+    // console.log("kuwdgv", values);
     const res = await client.post("/register", {
       ...values,
     });

@@ -6,6 +6,7 @@ import { isValidEmail, isValidObjField, updateError } from '../utils/methods';
 import FormContainer from './FormContainer';
 import FormInput from './FormInput';
 import FormSubmitButton from './FormSubmitButton';
+import { object } from 'yup';
 
 const LoginForm = () => {
   const { setIsLoggedIn, setProfile } = useLogin();
@@ -49,7 +50,7 @@ const LoginForm = () => {
         }
         console.log(res.data);
       } catch (error) {
-        console.log(error);
+        console.log(error,'error');
       }
     }
   };

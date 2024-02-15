@@ -65,26 +65,32 @@ export default function Cam() {
         const location = await Location.getCurrentPositionAsync({});
         setIsVisible(true); // Set isVisible to true when the capture button is pressed
         console.log('Location:', location.coords.latitude, location.coords.longitude);
-
+  
         const { uri } = await cameraRef.current.takePictureAsync();
         console.log('Photo captured:', uri);
-
-        const base64 = await convertToBase64(uri);
-
-        const apiUrl = 'https://dtravelshoot.deducetech.com/add_location';   //AWS Hosted
-
-        const payload = {
-          latitude: location.coords.latitude,
-          longitude: location.coords.longitude,
-          image: base64,
-        };
+  
+        // Read the image as a binary file
+        const imageFile = await FileSystem.readAsStringAsync(uri, {
+          encoding: FileSystem.EncodingType.Base64,
+        });
+  
+        const apiUrl = 'http://poi.deducetech.com:6831/add_location'; // AWS Hosted
+  
+        const payload = new FormData();
+        payload.append('latitude', location.coords.latitude);
+        payload.append('longitude', location.coords.longitude);
+        payload.append('image', {
+          uri: uri,
+          type: 'image/jpeg',
+          name: 'photo.jpg',
+        });
 
         const response = await fetch(apiUrl, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
           },
-          body: JSON.stringify(payload),
+          body: payload,
         });
 
         if (response.ok) {
@@ -104,6 +110,7 @@ export default function Cam() {
       }
     }
   };
+  
 
   const handleBackPress = () => {
     setShowTasks(true);
